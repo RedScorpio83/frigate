@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frigate</title>
+
+  <!-- Manifest & theme color -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0d1117">
+
+  <!-- Minimal styles (optional) -->
+  <style>
+    html, body { height: 100%; margin: 0; background: #0d1117; color: #c9d1d9; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif; }
+    .wrap { display: grid; place-items: center; height: 100%; text-align: center; }
+    a { color: #58a6ff; }
+  </style>
+
+  <!-- Immediate redirect -->
+  <script>
+    const TARGET = "https://frigate.thelaserspace.com";
+    // Use replace() so back button doesn't come back to the redirect shell
+    window.addEventListener('DOMContentLoaded', () => {
+      // In case PWA install opens offline, show a link fallback
+      if (navigator.onLine) {
+        location.replace(TARGET);
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <main>
+      <h1>Reindirizzamento a Frigate…</h1>
+      <p>Se non vieni reindirizzato automaticamente, clicca qui:</p>
+      <p><a href="https://frigate.thelaserspace.com" rel="noopener">Apri Frigate</a></p>
+      <p style="opacity:.7">Puoi installare questa Web App per un accesso rapido.</p>
+    </main>
+  </div>
+
+  <script>
+    // Register service worker (PWA installability)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(console.error);
+    }
+  </script>
+</body>
+</html>
